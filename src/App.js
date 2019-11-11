@@ -5,7 +5,7 @@ import {
   Switch
 } from "react-router-dom";
 import {Home} from "./routes";
-
+import { Header } from './components';
 const NotFound = () => (
     <h1>Page not found</h1>
 );
@@ -13,12 +13,13 @@ const NotFound = () => (
 function App() {
   return (
     <BrowserRouter>
-      <div className="App">
+      <Header />
+      <main className="App">
         <Switch>
           <Route exact path="/" component={Home} />
           <Route component={NotFound} />
         </Switch>
-      </div>
+      </main>
     </BrowserRouter>
   );
 }
