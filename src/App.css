@@ -1,0 +1,6 @@
+body {
+    margin: 15px 45px;
+}
+input:focus {
+    outline: none;
+}
