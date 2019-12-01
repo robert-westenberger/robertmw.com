@@ -1,8 +1,8 @@
 import React from 'react';
+import axios from 'axios';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
-import axios from "axios";
 
-function LoginForm() {
+function LoginForm({ setUserIsAuthenticated }) {
   return (<Formik
     initialValues={{ username: '', password: ''}}
     validate={values => {
@@ -20,7 +20,7 @@ function LoginForm() {
         {username, password })
         .then(function (response) {
           if (response.status === 200) {
-
+            setUserIsAuthenticated(true);
           }
         });
       setSubmitting(false);
