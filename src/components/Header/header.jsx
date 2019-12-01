@@ -1,8 +1,8 @@
 import React from 'react';
-import axios from "axios";
 import SearchForm from "../SearchForm/searchForm";
 import LoginForm from "../LoginForm/loginForm";
 import { Button } from '../Button/button';
+import axios from "../../utils/axios";
 import {
     HeaderComponent,
     SearchAndMenu,
@@ -11,7 +11,7 @@ import {
 
 const LogoutButton = ({setUserIsAuthenticated}) => (
   <Button onClick={() => {
-      axios.post("http://localhost:3000/logout").then(() => {
+      axios.post("/logout").then(() => {
           setUserIsAuthenticated(false);
       });
   }}>

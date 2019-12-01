@@ -1,12 +1,12 @@
 import React from 'react';
-import axios from "axios";
 import { Formik, Form, Field } from 'formik';
+import axios from '../../utils/axios';
 
 function SearchForm() {
   return (<Formik
     initialValues={{ query: ''}}
     onSubmit={(values, {setSubmitting}) => {
-      axios.get('http://localhost:3000/')
+      axios.get('/')
         .then(function (response) {
           // handle success
           console.log(response);

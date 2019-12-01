@@ -1,5 +1,5 @@
 import React from 'react';
-import axios from 'axios';
+import axios from '../../utils/axios';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 
 function LoginForm({ setUserIsAuthenticated }) {
@@ -16,7 +16,7 @@ function LoginForm({ setUserIsAuthenticated }) {
       return errors;
     }}
     onSubmit={({ username, password }, {setSubmitting}) => {
-      axios.post('http://localhost:3000/login',
+      axios.post('/login',
         {username, password })
         .then(function (response) {
           if (response.status === 200) {

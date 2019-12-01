@@ -5,6 +5,7 @@ import {
   BrowserRouter,
   Switch
 } from "react-router-dom";
+import axios from "./utils/axios";
 import {Home} from "./routes";
 import { Header } from './components';
 const NotFound = () => (
@@ -15,15 +16,30 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      userIsAuthenticated: false
+      userIsAuthenticated: false,
+      loading: true,
+      user: {}
     };
     this.setUserIsAuthenticated = this.setUserIsAuthenticated.bind(this);
   }
+  componentDidMount() {
+    axios.get("/").then((response) => {
+      const newState = {loading: false};
+      if (Object.prototype.hasOwnProperty.call(response.data, 'user')) {
+        newState.userIsAuthenticated = true;
+      }
+      this.setState(newState);
+    });
+  }
+
   setUserIsAuthenticated(userIsAuthenticated) {
     this.setState({userIsAuthenticated});
   }
   render() {
-    const { userIsAuthenticated } = this.state;
+    const { userIsAuthenticated, loading } = this.state;
+    if (loading) {
+      return null; // todo: LOADING ANIMATION
+    }
     return (
       <BrowserRouter>
         <Header
