@@ -1,3 +1,3 @@
 import Home from './home/home';
-
-export { Home };
+import Edit from "./edit/edit";
+export { Home, Edit };

@@ -6,8 +6,8 @@ import {
   Switch
 } from "react-router-dom";
 import axios from "./utils/axios";
-import {Home} from "./routes";
-import { Header } from './components';
+import {Home, Edit} from "./routes";
+import { Header, PrivateRoute } from './components';
 const NotFound = () => (
     <h1>Page not found</h1>
 );
@@ -49,7 +49,14 @@ class App extends Component {
         <main className="App">
           <Switch>
             <Route exact path="/" component={Home} />
+            <PrivateRoute
+              userIsAuthenticated={userIsAuthenticated}
+              exact
+              path="/edit"
+              component={Edit}
+            />
             <Route component={NotFound} />
+
           </Switch>
         </main>
       </BrowserRouter>

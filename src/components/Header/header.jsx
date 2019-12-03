@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from "react-router-dom";
 import SearchForm from "../SearchForm/searchForm";
 import LoginForm from "../LoginForm/loginForm";
 import { Button } from '../Button/button';
@@ -33,7 +34,7 @@ function Header({ setUserIsAuthenticated, userIsAuthenticated }) {
               userIsAuthenticated={userIsAuthenticated}
               setUserIsAuthenticated={setUserIsAuthenticated}
             />
-
+          <Link to="/edit">Edit</Link>
         </SearchAndMenu>
         <Bottom>
 
